@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JLF News</string>
+
+    <string name="news_top">Top News</string>
+    <string name="news_politics">Politics</string>
+    <string name="news_business">Business</string>
+    <string name="news_us">United States</string>
+    <string name="news_world">World</string>
+    <string name="news_entertainment">Entertainment</string>
+    <string name="news_science">Science</string>
+    <string name="news_technology">Technology</string>
+    <string name="news_sports">Sports</string>
+</resources>
