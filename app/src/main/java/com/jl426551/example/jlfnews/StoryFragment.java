@@ -14,25 +14,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jl426551.example.jlfnews.BingUtilities.BingNewsLoader;
-import com.jl426551.example.jlfnews.BingUtilities.News;
-import com.jl426551.example.jlfnews.BingUtilities.NewsAdapter;
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
+import com.jl426551.example.jlfnews.GuardianUtilities.Story;
+import com.jl426551.example.jlfnews.GuardianUtilities.StoryAdapter;
+import com.jl426551.example.jlfnews.GuardianUtilities.StoryLoader;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<News>> {
+public class StoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<Story>> {
 
-    NewsAdapter adapter;
+    StoryAdapter adapter;
     LinearLayoutManager manager;
-    ArrayList<News> newsList;
+    ArrayList<Story> list;
     final int LOADER_ID = 23;
     RecyclerView rv;
 
     int topic = -1;
 
 
-    public NewsFragment() {
+    public StoryFragment() {
     }
 
     public void addIndex(int selection) {
@@ -41,7 +41,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
     private void setAdapter() {
-        adapter = new NewsAdapter(newsList);
+        adapter = new StoryAdapter(list);
         manager = new LinearLayoutManager(getContext());
 
         //Calculate which position to scroll.
@@ -70,21 +70,21 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @NonNull
     @Override
-    public Loader<ArrayList<News>> onCreateLoader(int id, @Nullable Bundle args) {
+    public Loader<ArrayList<Story>> onCreateLoader(int id, @Nullable Bundle args) {
 
-        return new BingNewsLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
+        return new StoryLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<ArrayList<News>> loader, ArrayList<News> data) {
+    public void onLoadFinished(@NonNull Loader<ArrayList<Story>> loader, ArrayList<Story> data) {
 
         Log.v("NF", "on load finished");
-        newsList = data;
+        list = data;
         setAdapter();
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<ArrayList<News>> loader) {
+    public void onLoaderReset(@NonNull Loader<ArrayList<Story>> loader) {
 
     }
 

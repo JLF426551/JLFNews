@@ -33,7 +33,6 @@ public class BingSearchClass {
 
     public static ArrayList<News> search(String query) {
 
-        Log.v("BSC", "search called " + query);
         String searchTerm = query;
         String result = "";
 
