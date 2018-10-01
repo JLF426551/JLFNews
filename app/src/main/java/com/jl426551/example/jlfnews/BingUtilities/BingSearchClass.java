@@ -29,7 +29,7 @@ public class BingSearchClass {
      */
     static String HOST = "https://api.cognitive.microsoft.com";
     final static String PATH = "/bing/v7.0/news/search";
-    final static String countLimit = "&count=20";
+    final static String countLimit = "&count=25";
 
     public static ArrayList<News> search(String query) {
 
@@ -45,26 +45,18 @@ public class BingSearchClass {
 
         // Call the SearchWeb method and print the response.
         try {
-            //System.out.println("Searching the Web for: " + searchTerm);
             result = SearchWeb(searchTerm);
-            //System.out.println("\nRelevant HTTP Headers:\n");
-            //for (String header : result.relevantHeaders.keySet())
-            //    System.out.println(header + ": " + result.relevantHeaders.get(header));
-            //System.out.println("\nJSON Response:\n");
-            //System.out.println(prettify(result.jsonResponse));
         } catch (Exception e) {
             e.printStackTrace(System.out);
-            //System.exit(1);
         }
 
-        //Log.v("BSC", result.substring(0, 16));
         return parseNewsObject(result, searchTerm);
-        //return result.jsonResponse;
     }
 
     public static String SearchWeb(String searchQuery) throws Exception {
 
         URL url = null;
+
         // Construct the URL.
         try {
             url = new URL(HOST + PATH + "?q=" + URLEncoder.encode(searchQuery, "UTF-8") + countLimit);
@@ -89,7 +81,7 @@ public class BingSearchClass {
             stream = urlConnection.getInputStream();
             response = new Scanner(stream).useDelimiter("\\A").next();
         } catch (IOException e) {
-            Log.e("BSC", "Problem retrieving the earthquake JSON results.", e);
+            Log.e("BSC", "Problem retrieving JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -117,13 +109,15 @@ public class BingSearchClass {
 
         try {
             defaultJSONObject = new JSONObject(jsonresult);
-            //Initialize the array under 'news'
+
+            //Initialize the array under 'value'
             newsArray = defaultJSONObject.getJSONArray("value");
             length = newsArray.length();
 
             //Limit stories displayed.
-            if (length > 50)
-                length = 50;
+            if (length > 25)
+                length = 25;
+
             //Iterates the results JSONArray and creates the Story objects added to 'list.'
             for (int i = 0; i < length; i++) {
                 tempObject = newsArray.getJSONObject(i);
@@ -140,11 +134,8 @@ public class BingSearchClass {
             }
         } catch (JSONException e) {
             Log.e("BingSearchClass e", e.toString());
-            //newsList.add( new News("Query is" + searchTerm, "some url error", "some source", "image url??"));
             return newsList;
         }
-
-        //newsList.add( new News("Query is" + searchTerm, "some url", "some source", "image url??"));
         return newsList;
     }
 
