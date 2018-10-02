@@ -14,10 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jl426551.example.jlfnews.BingUtilities.BingNewsLoader;
 import com.jl426551.example.jlfnews.BingUtilities.News;
 import com.jl426551.example.jlfnews.BingUtilities.NewsAdapter;
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
+import com.jl426551.example.jlfnews.NewsAPI.NewsAPILoader;
 
 import java.util.ArrayList;
 
@@ -72,7 +72,8 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public Loader<ArrayList<News>> onCreateLoader(int id, @Nullable Bundle args) {
 
-        return new BingNewsLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
+        //return new BingNewsLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
+        return new NewsAPILoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
     }
 
     @Override

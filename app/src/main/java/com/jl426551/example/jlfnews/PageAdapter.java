@@ -39,7 +39,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
         //NewsFragment returnFragment = new NewsFragment();
-        StoryFragment returnFragment = new StoryFragment();
+        NewsFragment returnFragment = new NewsFragment();
 
         int newsIndex = tabIndexes.get(position);
         returnFragment.addIndex(newsIndex);

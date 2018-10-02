@@ -17,7 +17,7 @@ public class StorySearchClass {
     public static ArrayList<Story> search(String query) {
 
         String searchQuery = preFix + query + postFix;
-        ArrayList<Story> returnList = new ArrayList<Story>();
+        ArrayList<Story> returnList = new ArrayList<>();
         String networkResponse;
 
         try {
