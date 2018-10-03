@@ -2,6 +2,8 @@ package com.jl426551.example.jlfnews.GuardianUtilities;
 
 import android.util.Log;
 
+import com.jl426551.example.jlfnews.BingUtilities.News;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,10 +16,10 @@ public class StorySearchClass {
     private final static String preFix = "https://content.guardianapis.com/search?q=";
     private final static String postFix = "&from-date=2017-01-01&api-key=test";
 
-    public static ArrayList<Story> search(String query) {
+    public static ArrayList<News> search(String query) {
 
         String searchQuery = preFix + query + postFix;
-        ArrayList<Story> returnList = new ArrayList<>();
+        ArrayList<News> returnList = new ArrayList<>();
         String networkResponse;
 
         try {
@@ -31,7 +33,7 @@ public class StorySearchClass {
 
     }
 
-    public static ArrayList<Story> createBookList(String jsonresponse) {
+    public static ArrayList<News> createBookList(String jsonresponse) {
          /* Used as the algorithm iterates through each object. They're used to create the
         individual Book objects added to the list. */
         String tempTitle;
@@ -40,7 +42,7 @@ public class StorySearchClass {
         String tempURL;
 
         //The list which will be populated and returned.
-        ArrayList<Story> list = new ArrayList<>();
+        ArrayList<News> list = new ArrayList<>();
 
         try {
             JSONObject firstLevelObject = new JSONObject(jsonresponse);
@@ -60,12 +62,9 @@ public class StorySearchClass {
                 tempDate = tempObject.getString("webPublicationDate");
                 tempDate = tempDate.substring(0, 10);
 
-                tempSection = tempObject.getString("sectionName");
-                tempSection = "In section: " + tempSection;
-
                 tempURL = tempObject.getString("webUrl");
 
-                list.add(new Story(tempTitle, tempSection, tempDate, tempURL));
+                list.add(new News(tempTitle, tempURL, tempDate, "Guardian", null));
             }
 
         } catch (JSONException e) {

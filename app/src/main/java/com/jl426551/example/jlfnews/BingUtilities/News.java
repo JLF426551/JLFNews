@@ -6,10 +6,12 @@ public class News {
     private String articleURL;
     private String imageURL;
     private String source;
+    private String date;
 
-    public News(String title, String url, String source, String imageURL) {
+    public News(String title, String url, String date, String source, String imageURL) {
         this.title = title;
         this.articleURL = url;
+        this.date = date;
         this.source = source;
         this.imageURL = imageURL;
     }
@@ -30,7 +32,9 @@ public class News {
         return imageURL;
     }
 
-    public String getSummary() {
-        return "" + title.substring(0, 4) + " at " + source;
+    public String getDate()
+    {
+        return date;
     }
+
 }

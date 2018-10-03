@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jl426551.example.jlfnews.BingUtilities.News;
 import com.jl426551.example.jlfnews.R;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHolder> {
 
     private int totalCount;
-    private ArrayList<Story> list;
+    private ArrayList<News> list;
 
-    public StoryAdapter(ArrayList<Story> stories) {
+    public StoryAdapter(ArrayList<News> stories) {
         list = stories;
         totalCount = list.size();
     }
@@ -65,7 +66,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHol
         }
 
         void bind(int currentPosition) {
-            Story currentStory = list.get(currentPosition);
+            News currentStory = list.get(currentPosition);
 
             titleView.setText(currentStory.getTitle());
             sourceTextView.setText(currentStory.getDate());

@@ -40,9 +40,10 @@ public class NewsApiSearchClass {
          /* Used as the algorithm iterates through each object. They're used to create the
         individual Book objects added to the list. */
         String tempTitle;
+        String tempURL;
+        String tempDate;
         String tempSource;
         String tempImageURL;
-        String tempURL;
 
         //The list which will be populated and returned.
         ArrayList<News> list = new ArrayList<>();
@@ -62,8 +63,9 @@ public class NewsApiSearchClass {
                 tempTitle = tempObject.getString("title");
                 tempURL = tempObject.getString("url");
                 tempImageURL = tempObject.getString("urlToImage");
+                tempDate = tempObject.getString("publishedAt").substring(0,10);
 
-                list.add(new News(tempTitle, tempURL,tempSource,tempImageURL));
+                list.add(new News(tempTitle, tempURL,tempDate, tempSource, tempImageURL));
             }
 
         } catch (JSONException e) {

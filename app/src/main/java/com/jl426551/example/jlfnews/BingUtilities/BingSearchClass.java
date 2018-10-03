@@ -20,7 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class BingSearchClass {
 
     // Enter a valid subscription key.
-    static String subscriptionKey = "";
+    static String subscriptionKey = "326b343d1aeb47119a6786f5c78d1484";
 
     /*
      * If you encounter unexpected authorization errors, double-check these values
@@ -101,7 +101,9 @@ public class BingSearchClass {
 
         JSONObject defaultJSONObject;
         JSONObject tempObject;
+
         String tempTitle;
+        String tempDate;
         String tempArticleURL;
         String tempImageURL;
         String tempSource;
@@ -123,13 +125,13 @@ public class BingSearchClass {
 
                 tempTitle = tempObject.getString("name");
                 tempArticleURL = tempObject.getString("url");
-
+                tempDate = tempObject.getString("datePublished").substring(0, 10);
                 JSONArray subLevel = tempObject.getJSONArray("provider");
                 JSONObject providerObject = subLevel.getJSONObject(0);
                 tempSource = providerObject.getString("name");
                 tempImageURL = providerObject.getJSONObject("image").getJSONObject("thumbnail").getString("contentUrl");
 
-                newsList.add(new News(tempTitle, tempArticleURL, tempSource, tempImageURL));
+                newsList.add(new News(tempTitle, tempArticleURL, tempDate, tempSource, tempImageURL));
             }
         } catch (JSONException e) {
             Log.e("BingSearchClass e", e.toString());

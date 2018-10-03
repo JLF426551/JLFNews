@@ -13,18 +13,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jl426551.example.jlfnews.BingUtilities.News;
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
-import com.jl426551.example.jlfnews.GuardianUtilities.Story;
 import com.jl426551.example.jlfnews.GuardianUtilities.StoryAdapter;
 import com.jl426551.example.jlfnews.GuardianUtilities.StoryLoader;
 
 import java.util.ArrayList;
 
-public class StoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<Story>> {
+public class StoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<News>> {
 
     StoryAdapter adapter;
     LinearLayoutManager manager;
-    ArrayList<Story> list;
+    ArrayList<News> list;
     final int LOADER_ID = 23;
     RecyclerView rv;
 
@@ -68,19 +68,19 @@ public class StoryFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @NonNull
     @Override
-    public Loader<ArrayList<Story>> onCreateLoader(int id, @Nullable Bundle args) {
+    public Loader<ArrayList<News>> onCreateLoader(int id, @Nullable Bundle args) {
 
         return new StoryLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<ArrayList<Story>> loader, ArrayList<Story> data) {
+    public void onLoadFinished(@NonNull Loader<ArrayList<News>> loader, ArrayList<News> data) {
         list = data;
         setAdapter();
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<ArrayList<Story>> loader) {
+    public void onLoaderReset(@NonNull Loader<ArrayList<News>> loader) {
 
     }
 

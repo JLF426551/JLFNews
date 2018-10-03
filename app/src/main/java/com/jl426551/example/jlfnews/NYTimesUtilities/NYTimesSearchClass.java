@@ -40,9 +40,10 @@ public class NYTimesSearchClass {
          /* Used as the algorithm iterates through each object. They're used to create the
         individual Book objects added to the list. */
         String tempTitle;
+        String tempURL;
+        String tempDate;
         String tempSource;
         String tempImageURL;
-        String tempURL;
 
         //The list which will be populated and returned.
         ArrayList<News> list = new ArrayList<>();
@@ -66,9 +67,9 @@ public class NYTimesSearchClass {
                 //Skips over any entries that aren't articles. e.g. Topics
                 if (tempObject.has("source")) {
                     tempSource = tempObject.getString("source");
-
                     tempURL = tempObject.getString("web_url");
                     tempTitle = tempObject.getJSONObject("headline").getString("main");
+                    tempDate = tempObject.getString("pub_date").substring(0, 10);
 
                     multimediaArray = tempObject.getJSONArray("multimedia");
 
@@ -78,7 +79,7 @@ public class NYTimesSearchClass {
                     } else
                         tempImageURL = null;
 
-                    list.add(new News(tempTitle, tempURL, tempSource, tempImageURL));
+                    list.add(new News(tempTitle, tempURL, tempDate, tempSource, tempImageURL));
                 }
             }
 
