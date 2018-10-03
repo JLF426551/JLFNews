@@ -9,7 +9,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +43,6 @@ public class StoryFragment extends Fragment implements LoaderManager.LoaderCallb
         adapter = new StoryAdapter(list);
         manager = new LinearLayoutManager(getContext());
 
-        //Calculate which position to scroll.
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
@@ -77,8 +75,6 @@ public class StoryFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onLoadFinished(@NonNull Loader<ArrayList<Story>> loader, ArrayList<Story> data) {
-
-        Log.v("NF", "on load finished");
         list = data;
         setAdapter();
     }
