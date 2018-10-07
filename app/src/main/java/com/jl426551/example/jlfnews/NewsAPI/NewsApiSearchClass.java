@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class NewsApiSearchClass {
 
-    private final static String API_KEY = "";
+    private final static String API_KEY = "7b797bd087a04b4fb8e5788b7ad7d881";
     private final static String preFix = "https://newsapi.org/v2/everything?q=";
     private final static String keyHolder = "&apiKey=" + API_KEY;
 

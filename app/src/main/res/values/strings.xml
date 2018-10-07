@@ -10,4 +10,8 @@
     <string name="news_science">Science</string>
     <string name="news_technology">Technology</string>
     <string name="news_sports">Sports</string>
+    <string name="search_apinews">Use APINews.org</string>
+    <string name="search_bing">Use Bing</string>
+    <string name="search_guardian">Use Guardian</string>
+    <string name="search_nyt_api">Use New York Times API</string>
 </resources>

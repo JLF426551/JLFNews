@@ -9,6 +9,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import android.view.ViewGroup;
 import com.jl426551.example.jlfnews.BingUtilities.News;
 import com.jl426551.example.jlfnews.BingUtilities.NewsAdapter;
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
-import com.jl426551.example.jlfnews.GuardianUtilities.StoryLoader;
+import com.jl426551.example.jlfnews.DataUtilities.NewsLoader;
 
 import java.util.ArrayList;
 
@@ -29,15 +30,23 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     RecyclerView rv;
 
     int topic = -1;
+    int searchEngine = -1;
 
 
     public NewsFragment() {
+        Log.v("NFragment", "created");
+
     }
 
     public void addIndex(int selection) {
         topic = selection;
     }
 
+    public void addEngine(int searchEngineSelection)
+    {
+        Log.v("NFragment", "engine " + searchEngineSelection);
+        searchEngine = searchEngineSelection;
+    }
 
     private void setAdapter() {
         adapter = new NewsAdapter(newsList);
@@ -71,10 +80,9 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public Loader<ArrayList<News>> onCreateLoader(int id, @Nullable Bundle args) {
 
-        return new StoryLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
-        //return new BingNewsLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
-        //return new NewsAPILoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
-        //return new NYTimesLoader(getContext(), CategoryUtilities.getTitle(getContext(), topic));
+        Log.v("NF", "onCreate loader");
+        Log.v("NF", "enginge " + searchEngine);
+        return new NewsLoader(getContext(), searchEngine, CategoryUtilities.getTitle(getContext(), topic));
     }
 
     @Override

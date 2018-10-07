@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/api_search_option"
+        android:title="@string/search_apinews" />
+    <item
+        android:id="@+id/bing_search_option"
+        android:title="@string/search_bing" />
+    <item
+        android:id="@+id/guardian_search_option"
+        android:title="@string/search_guardian" />
+    <item
+        android:id="@+id/nyt_search_option"
+        android:title="@string/search_nyt_api" />
+</menu>

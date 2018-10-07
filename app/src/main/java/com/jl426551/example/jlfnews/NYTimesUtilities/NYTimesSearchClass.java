@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class NYTimesSearchClass {
 
-    final static String API_KEY = "";
+    final static String API_KEY = "eb9b231004d84c88b1bd2f809f529a4b";
 
     static String preFix = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=";
     static String postFix = "&f1=headline,web_url,source,multimedia&api-key=";
