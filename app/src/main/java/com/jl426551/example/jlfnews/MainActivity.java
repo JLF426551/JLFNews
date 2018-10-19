@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public void setUpAdapterViews(int searchEngineSelection) {
 
         adapter = null;
-        Log.v("MA", "adapter with " + searchEngineSelection);
+
         // Create an adapter that knows which fragment should be shown on each page
         adapter = new PageAdapter(this, getSupportFragmentManager(), searchEngineSelection);
 

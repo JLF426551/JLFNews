@@ -1,4 +1,4 @@
-package com.jl426551.example.jlfnews.GuardianUtilities;
+package com.jl426551.example.jlfnews.DataUtilities;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,37 +9,40 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jl426551.example.jlfnews.BingUtilities.News;
 import com.jl426551.example.jlfnews.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
     private int totalCount;
     private ArrayList<News> list;
 
-    public StoryAdapter(ArrayList<News> stories) {
-        list = stories;
-        totalCount = list.size();
+    public NewsAdapter(ArrayList<News> news) {
+        if (news != null) {
+
+            list = news;
+            totalCount = news.size();
+        }
     }
 
     @NonNull
     @Override
-    public StoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         final boolean attachToParent = false;
 
         View viewToProcess = inflater.inflate(R.layout.single_news_layout, parent, attachToParent);
-        StoryViewHolder holder = new StoryViewHolder(viewToProcess);
+        NewsViewHolder holder = new NewsViewHolder(viewToProcess);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoryAdapter.StoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
         holder.bind(position);
     }
 
@@ -48,28 +51,28 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHol
         return totalCount;
     }
 
-    class StoryViewHolder extends RecyclerView.ViewHolder {
+    class NewsViewHolder extends RecyclerView.ViewHolder {
 
         Context context;
         ImageView sourceImageView;
         TextView titleView;
         TextView sourceTextView;
 
-        public StoryViewHolder(View itemView) {
+        public NewsViewHolder(View itemView) {
             super(itemView);
             context = itemView.getContext();
 
             sourceImageView = itemView.findViewById(R.id.source_image);
-            sourceImageView.setVisibility(View.GONE);
             titleView = itemView.findViewById(R.id.news_title);
             sourceTextView = itemView.findViewById(R.id.news_source);
         }
 
         void bind(int currentPosition) {
-            News currentStory = list.get(currentPosition);
+            News currentNews = list.get(currentPosition);
 
-            titleView.setText(currentStory.getTitle());
-            sourceTextView.setText(currentStory.getDate());
+            Picasso.get().load(currentNews.getImageURL()).into(sourceImageView);
+            titleView.setText(currentNews.getTitle());
+            sourceTextView.setText(currentNews.getSource());
         }
     }
 }

@@ -3,11 +3,10 @@ package com.jl426551.example.jlfnews.DataUtilities;
 import android.content.Context;
 import android.util.Log;
 
-import com.jl426551.example.jlfnews.BingUtilities.BingSearchClass;
-import com.jl426551.example.jlfnews.BingUtilities.News;
-import com.jl426551.example.jlfnews.GuardianUtilities.StorySearchClass;
-import com.jl426551.example.jlfnews.NYTimesUtilities.NYTimesSearchClass;
-import com.jl426551.example.jlfnews.NewsAPI.NewsApiSearchClass;
+import com.jl426551.example.jlfnews.SearchClasses.BingSearchClass;
+import com.jl426551.example.jlfnews.SearchClasses.StorySearchClass;
+import com.jl426551.example.jlfnews.SearchClasses.NYTimesSearchClass;
+import com.jl426551.example.jlfnews.SearchClasses.NewsApiSearchClass;
 
 import java.util.ArrayList;
 
@@ -26,8 +25,7 @@ public class NewsLoader extends android.support.v4.content.AsyncTaskLoader<Array
         super(context);
         selection = service;
         this.query = query;
-        Log.v("NewsLoader", "created");
-        Log.v("service", "" + selection);
+
     }
 
     @Override

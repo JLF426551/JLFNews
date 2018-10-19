@@ -1,4 +1,4 @@
-package com.jl426551.example.jlfnews.GuardianUtilities;
+package com.jl426551.example.jlfnews.DataUtilities;
 
 import android.util.Log;
 

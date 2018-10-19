@@ -14,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jl426551.example.jlfnews.BingUtilities.News;
-import com.jl426551.example.jlfnews.BingUtilities.NewsAdapter;
+import com.jl426551.example.jlfnews.DataUtilities.News;
+import com.jl426551.example.jlfnews.DataUtilities.NewsAdapter;
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
 import com.jl426551.example.jlfnews.DataUtilities.NewsLoader;
 

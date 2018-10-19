@@ -1,4 +1,4 @@
-package com.jl426551.example.jlfnews.BingUtilities;
+package com.jl426551.example.jlfnews.DataUtilities;
 
 public class News {
 

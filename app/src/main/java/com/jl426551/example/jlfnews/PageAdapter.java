@@ -4,27 +4,25 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.jl426551.example.jlfnews.DataUtilities.CategoryUtilities;
 
 import java.util.ArrayList;
 
-public class PageAdapter extends FragmentPagerAdapter {
+public class PageAdapter extends FragmentStatePagerAdapter {
 
-    private Context context;
     private ArrayList<String> tabTitles;
     private ArrayList<Integer> tabIndexes;
     private int searchEngineSelection;
 
-    //Default Constructor. Assumes reader has all categories enabled.
+    //Default Constructor.
     public PageAdapter(Context context, FragmentManager manager, int searchOption) {
 
         super(manager);
         Log.v("PageAdapter", "creator " + searchOption);
 
-        this.context = context;
         searchEngineSelection = searchOption;
         tabTitles = CategoryUtilities.getDefaultTabTitle(context);
         tabIndexes = CategoryUtilities.getIndeces();

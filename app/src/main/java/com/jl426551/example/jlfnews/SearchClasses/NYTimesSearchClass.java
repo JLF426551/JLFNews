@@ -1,9 +1,9 @@
-package com.jl426551.example.jlfnews.NYTimesUtilities;
+package com.jl426551.example.jlfnews.SearchClasses;
 
 import android.util.Log;
 
-import com.jl426551.example.jlfnews.BingUtilities.News;
-import com.jl426551.example.jlfnews.GuardianUtilities.NetworkUtilities;
+import com.jl426551.example.jlfnews.DataUtilities.News;
+import com.jl426551.example.jlfnews.DataUtilities.NetworkUtilities;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class NYTimesSearchClass {
 
-    final static String API_KEY = "eb9b231004d84c88b1bd2f809f529a4b";
+    final static String API_KEY = "";
 
     static String preFix = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=";
     static String postFix = "&f1=headline,web_url,source,multimedia&api-key=";

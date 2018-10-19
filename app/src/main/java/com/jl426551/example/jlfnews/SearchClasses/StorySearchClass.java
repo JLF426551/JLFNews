@@ -1,8 +1,9 @@
-package com.jl426551.example.jlfnews.GuardianUtilities;
+package com.jl426551.example.jlfnews.SearchClasses;
 
 import android.util.Log;
 
-import com.jl426551.example.jlfnews.BingUtilities.News;
+import com.jl426551.example.jlfnews.DataUtilities.NetworkUtilities;
+import com.jl426551.example.jlfnews.DataUtilities.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;

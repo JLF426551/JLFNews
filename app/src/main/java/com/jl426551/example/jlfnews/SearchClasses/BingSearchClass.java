@@ -1,6 +1,8 @@
-package com.jl426551.example.jlfnews.BingUtilities;
+package com.jl426551.example.jlfnews.SearchClasses;
 
 import android.util.Log;
+
+import com.jl426551.example.jlfnews.DataUtilities.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +22,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class BingSearchClass {
 
     // Enter a valid subscription key.
-    static String subscriptionKey = "326b343d1aeb47119a6786f5c78d1484";
+    static String subscriptionKey = "";
 
     /*
      * If you encounter unexpected authorization errors, double-check these values
@@ -29,7 +31,6 @@ public class BingSearchClass {
      */
     static String HOST = "https://api.cognitive.microsoft.com";
     final static String PATH = "/bing/v7.0/news/search";
-    final static String countLimit = "&count=25";
 
     public static ArrayList<News> search(String query) {
 
@@ -58,7 +59,7 @@ public class BingSearchClass {
 
         // Construct the URL.
         try {
-            url = new URL(HOST + PATH + "?q=" + URLEncoder.encode(searchQuery, "UTF-8") + countLimit);
+            url = new URL(HOST + PATH + "?q=" + URLEncoder.encode(searchQuery, "UTF-8"));
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             Log.e("BSC Error", e.toString());
         }
@@ -75,7 +76,6 @@ public class BingSearchClass {
             // Open the connection.
             urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-
             // Receive the JSON response body.
             stream = urlConnection.getInputStream();
             response = new Scanner(stream).useDelimiter("\\A").next();

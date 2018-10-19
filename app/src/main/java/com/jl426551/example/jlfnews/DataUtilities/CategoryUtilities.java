@@ -10,21 +10,21 @@ public class CategoryUtilities {
 
     private final static int DO_NOT_INCLUDE = 0;
 
-    public final static int CATEGORY_TOP = 0;
-    public final static int CATEGORY_POLITICS = 1;
-    public final static int CATEGORY_BUSINESS = 2;
-    public final static int CATEGORY_US = 3;
-    public final static int CATEGORY_WORLD = 4;
-    public final static int CATEGORY_ENTERTAINMENT = 5;
-    public final static int CATEGORY_SCIENCE = 6;
-    public final static int CATEGORY_TECHNOLOGY = 7;
-    public final static int CATEGORY_SPORTS = 8;
+    private final static int CATEGORY_TOP = 0;
+    private final static int CATEGORY_POLITICS = 1;
+    private final static int CATEGORY_BUSINESS = 2;
+    private final static int CATEGORY_US = 3;
+    private final static int CATEGORY_WORLD = 4;
+    private final static int CATEGORY_ENTERTAINMENT = 5;
+    private final static int CATEGORY_SCIENCE = 6;
+    private final static int CATEGORY_TECHNOLOGY = 7;
+    private final static int CATEGORY_SPORTS = 8;
 
     public static ArrayList<String> getDefaultTabTitle(Context context) {
         ArrayList<String> titles = new ArrayList<>();
-        //titles.add(context.getString(R.string.news_top));
-        //titles.add(context.getString(R.string.news_politics));
-        //titles.add(context.getString(R.string.news_business));
+        titles.add(context.getString(R.string.news_top));
+        titles.add(context.getString(R.string.news_politics));
+        titles.add(context.getString(R.string.news_business));
         titles.add(context.getString(R.string.news_us));
         titles.add(context.getString(R.string.news_world));
         titles.add(context.getString(R.string.news_entertainment));
@@ -72,27 +72,6 @@ public class CategoryUtilities {
         }
 
         return titles;
-    }
-
-    public static ArrayList<Integer> getSelectedIndices(int[] selection) {
-        ArrayList<Integer> indexes = new ArrayList<>();
-        indexes.add(0);
-        indexes.add(1);
-        indexes.add(2);
-        indexes.add(3);
-        indexes.add(4);
-        indexes.add(5);
-        indexes.add(6);
-        indexes.add(7);
-        indexes.add(8);
-
-        //Remove values which are not wanted by user.
-        for (int k = selection.length - 1; k >= 0; k--) {
-            if (selection[k] == DO_NOT_INCLUDE)
-                indexes.remove(k);
-        }
-
-        return indexes;
     }
 
     public static String getTitle(Context context, int categoryIndex) {
